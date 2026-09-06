@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Personal project-specific settings and configuration files
+.DS_Store
+.idea/
+.python-version
+main.py
+pyproject.toml
+src/
