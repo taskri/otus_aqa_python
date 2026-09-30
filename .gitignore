@@ -221,6 +221,4 @@ __marimo__/
 .DS_Store
 .idea/
 .python-version
-main.py
 pyproject.toml
-src/
