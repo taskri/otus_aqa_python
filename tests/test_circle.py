@@ -8,6 +8,15 @@ from math import pi
         pytest.param((1,), None, id="valid integer"),
         pytest.param((1.2,), None, id="invalid float"),
         pytest.param((pi,), None, id="approximate float"),
+    ]
+)
+def test_circle_creation_valid_sides_quantity(sides, expected_exception):
+        f = Circle(*sides)
+        assert isinstance(f, Circle), f"Expected an instance of 'Circle', now is {type(f).__name__}"
+
+@pytest.mark.parametrize(
+    ("sides", "expected_exception"),
+    [
         pytest.param((), TypeError, id="empty parameters"),
         pytest.param((1, 2), TypeError, id="too many parameters"),
         pytest.param((0,), ValueError, id="zero"),
@@ -16,14 +25,9 @@ from math import pi
         pytest.param((True,), ValueError, id="boolean"),
     ]
 )
-def test_circle_creation(sides, expected_exception):
-    if expected_exception is not None:
+def test_circle_creation_only_errors(sides, expected_exception):
         with pytest.raises(expected_exception):
             f = Circle(*sides)
-    else:
-        f = Circle(*sides)
-        assert isinstance(f, Circle), f"Expected an instance of 'Circle', now is {type(f).__name__}"
-
 
 @pytest.mark.parametrize(
     ("side", "perimeter"),
